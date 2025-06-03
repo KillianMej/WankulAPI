@@ -2,143 +2,93 @@ openapi: 3.0.0
 info:
   title: Wankul Cards API
   version: 1.0.0
-  description: Une API non officielle permettant d'accéder aux informations des cartes Wankul.
+  description: Api non officielle du jeu de carte Wankul
+
 paths:
+  /:
+    get:
+      summary: Page d'accueil
+      responses:
+        '200':
+          description: Message de bienvenue
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: Api non officielle du jeu de carte Wankul
+
   /cartes:
     get:
-      summary: Récupère toutes les cartes
-      responses:
-        '200':
-          description: Liste de toutes les cartes
-
-  /cartes/{saison}:
-    get:
-      summary: Récupère les cartes d'une saison
+      summary: Récupère les cartes avec filtres optionnels
       parameters:
-        - name: saison
-          in: path
-          required: true
+        - in: query
+          name: saison
           schema:
             type: string
-      responses:
-        '200':
-          description: Cartes de la saison spécifiée
-
-  /cartes/nom/{nom}:
-    get:
-      summary: Recherche des cartes par nom (utiliser des underscores pour les espaces)
-      parameters:
-        - name: nom
-          in: path
-          required: true
+          description: Nom de la saison
+        - in: query
+          name: saison_numero
           schema:
             type: string
-      responses:
-        '200':
-          description: Cartes dont le titre contient le texte donné
-
-  /cartes/numero/{numero}:
-    get:
-      summary: Recherche des cartes par numéro
-      parameters:
-        - name: numero
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Cartes correspondant au numéro
-
-  /cartes/saison/{saison}/numero/{numero}:
-    get:
-      summary: Récupère une carte par saison et numéro
-      parameters:
-        - name: saison
-          in: path
-          required: true
-          schema:
-            type: integer
-        - name: numero
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Carte spécifique par saison et numéro
-
-  /cartes/effigie/{effigie}:
-    get:
-      summary: Recherche par effigie (utiliser des underscores pour les espaces)
-      parameters:
-        - name: effigie
-          in: path
-          required: true
+          description: Numéro de la saison
+        - in: query
+          name: nom
           schema:
             type: string
-      responses:
-        '200':
-          description: Cartes correspondant à l'effigie
-
-  /cartes/artiste/{artiste}:
-    get:
-      summary: Recherche par artiste (utiliser des underscores pour les espaces)
-      parameters:
-        - name: artiste
-          in: path
-          required: true
+          description: Nom de la carte
+        - in: query
+          name: numero
           schema:
             type: string
-      responses:
-        '200':
-          description: Cartes correspondant à l'artiste
-
-  /cartes/rarete/{rarete}:
-    get:
-      summary: Recherche par rareté (utiliser des underscores pour les espaces)
-      parameters:
-        - name: rarete
-          in: path
-          required: true
+          description: Numéro de la carte
+        - in: query
+          name: effigie
           schema:
             type: string
+          description: Nom de l'effigie
+        - in: query
+          name: artiste
+          schema:
+            type: string
+          description: Nom de l'artiste
+        - in: query
+          name: rarete
+          schema:
+            type: string
+          description: Niveau de rareté
       responses:
         '200':
-          description: Cartes correspondant à la rareté
-
+          description: Liste des cartes filtrées
+        '404':
+          description: Aucune carte trouvée
+        '500':
+          description: Erreur serveur
   /saisons:
     get:
-      summary: Récupère toutes les saisons
+      summary: Récupère les saisons avec filtres optionnels
+      parameters:
+        - in: query
+          name: saison
+          schema:
+            type: string
+          description: Nom de la saison
+        - in: query
+          name: saison_numero
+          schema:
+            type: string
+          description: Numéro de la saison
+        - in: query
+          name: nbr_cartes
+          schema:
+            type: integer
+          description: Nombre de cartes dans la saison
       responses:
         '200':
           description: Liste des saisons
-
-  /saison/{nom}:
-    get:
-      summary: Récupère une saison par nom
-      parameters:
-        - name: nom
-          in: path
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Saison correspondant au nom
-
-  /saison/numero/{numero}:
-    get:
-      summary: Récupère une saison par numéro
-      parameters:
-        - name: numero
-          in: path
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Saison correspondant au numéro
+        '404':
+          description: Aucune saison trouvée
+        '500':
+          description: Erreur serveur
 
   /effigies:
     get:
@@ -146,6 +96,8 @@ paths:
       responses:
         '200':
           description: Liste des effigies
+        '500':
+          description: Erreur serveur
 
   /artistes:
     get:
@@ -153,6 +105,8 @@ paths:
       responses:
         '200':
           description: Liste des artistes
+        '500':
+          description: Erreur serveur
 
   /raretes:
     get:
@@ -160,3 +114,6 @@ paths:
       responses:
         '200':
           description: Liste des raretés
+        '500':
+          description: Erreur serveur
+
