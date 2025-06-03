@@ -1,0 +1,162 @@
+openapi: 3.0.0
+info:
+  title: Wankul Cards API
+  version: 1.0.0
+  description: Une API non officielle permettant d'accéder aux informations des cartes Wankul.
+paths:
+  /cartes:
+    get:
+      summary: Récupère toutes les cartes
+      responses:
+        '200':
+          description: Liste de toutes les cartes
+
+  /cartes/{saison}:
+    get:
+      summary: Récupère les cartes d'une saison
+      parameters:
+        - name: saison
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cartes de la saison spécifiée
+
+  /cartes/nom/{nom}:
+    get:
+      summary: Recherche des cartes par nom (utiliser des underscores pour les espaces)
+      parameters:
+        - name: nom
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cartes dont le titre contient le texte donné
+
+  /cartes/numero/{numero}:
+    get:
+      summary: Recherche des cartes par numéro
+      parameters:
+        - name: numero
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Cartes correspondant au numéro
+
+  /cartes/saison/{saison}/numero/{numero}:
+    get:
+      summary: Récupère une carte par saison et numéro
+      parameters:
+        - name: saison
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: numero
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Carte spécifique par saison et numéro
+
+  /cartes/effigie/{effigie}:
+    get:
+      summary: Recherche par effigie (utiliser des underscores pour les espaces)
+      parameters:
+        - name: effigie
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cartes correspondant à l'effigie
+
+  /cartes/artiste/{artiste}:
+    get:
+      summary: Recherche par artiste (utiliser des underscores pour les espaces)
+      parameters:
+        - name: artiste
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cartes correspondant à l'artiste
+
+  /cartes/rarete/{rarete}:
+    get:
+      summary: Recherche par rareté (utiliser des underscores pour les espaces)
+      parameters:
+        - name: rarete
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Cartes correspondant à la rareté
+
+  /saisons:
+    get:
+      summary: Récupère toutes les saisons
+      responses:
+        '200':
+          description: Liste des saisons
+
+  /saison/{nom}:
+    get:
+      summary: Récupère une saison par nom
+      parameters:
+        - name: nom
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Saison correspondant au nom
+
+  /saison/numero/{numero}:
+    get:
+      summary: Récupère une saison par numéro
+      parameters:
+        - name: numero
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Saison correspondant au numéro
+
+  /effigies:
+    get:
+      summary: Récupère toutes les effigies
+      responses:
+        '200':
+          description: Liste des effigies
+
+  /artistes:
+    get:
+      summary: Récupère tous les artistes
+      responses:
+        '200':
+          description: Liste des artistes
+
+  /raretes:
+    get:
+      summary: Récupère toutes les raretés
+      responses:
+        '200':
+          description: Liste des raretés
