@@ -10,7 +10,7 @@ const app = express();
 app.use(express.json());
 
 // Configuration de Swagger
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Api non officielle du jeu de carte Wankul');
