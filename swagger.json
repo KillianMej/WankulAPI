@@ -1,0 +1,183 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Wankul Cards API",
+        "version": "1.0.0",
+        "description": "Api non officielle du jeu de carte Wankul"
+    },
+    "paths": {
+        "/": {
+            "get": {
+                "summary": "Page d'accueil",
+                "responses": {
+                    "200": {
+                        "description": "Message de bienvenue",
+                        "content": {
+                            "text/plain": {
+                                "schema": {
+                                    "type": "string",
+                                    "example": "Api non officielle du jeu de carte Wankul"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/cartes": {
+            "get": {
+                "summary": "Récupère les cartes avec filtres optionnels",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "saison",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Nom de la saison"
+                    },
+                    {
+                        "in": "query",
+                        "name": "saison_numero",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Numéro de la saison"
+                    },
+                    {
+                        "in": "query",
+                        "name": "nom",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Nom de la carte"
+                    },
+                    {
+                        "in": "query",
+                        "name": "numero",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Numéro de la carte"
+                    },
+                    {
+                        "in": "query",
+                        "name": "effigie",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Nom de l'effigie"
+                    },
+                    {
+                        "in": "query",
+                        "name": "artiste",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Nom de l'artiste"
+                    },
+                    {
+                        "in": "query",
+                        "name": "rarete",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Niveau de rareté"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Liste des cartes filtrées"
+                    },
+                    "404": {
+                        "description": "Aucune carte trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/saisons": {
+            "get": {
+                "summary": "Récupère les saisons avec filtres optionnels",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "saison",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Nom de la saison"
+                    },
+                    {
+                        "in": "query",
+                        "name": "saison_numero",
+                        "schema": {
+                            "type": "string"
+                        },
+                        "description": "Numéro de la saison"
+                    },
+                    {
+                        "in": "query",
+                        "name": "nbr_cartes",
+                        "schema": {
+                            "type": "integer"
+                        },
+                        "description": "Nombre de cartes dans la saison"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Liste des saisons"
+                    },
+                    "404": {
+                        "description": "Aucune saison trouvée"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/effigies": {
+            "get": {
+                "summary": "Récupère toutes les effigies",
+                "responses": {
+                    "200": {
+                        "description": "Liste des effigies"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/artistes": {
+            "get": {
+                "summary": "Récupère tous les artistes",
+                "responses": {
+                    "200": {
+                        "description": "Liste des artistes"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        },
+        "/raretes": {
+            "get": {
+                "summary": "Récupère toutes les raretés",
+                "responses": {
+                    "200": {
+                        "description": "Liste des raretés"
+                    },
+                    "500": {
+                        "description": "Erreur serveur"
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,5 +1,7 @@
 import dotenv from 'dotenv';
 import express, {Request, Response} from 'express';
+import swaggerUi from 'swagger-ui-express';
+import swaggerDocument from '../swagger.json';
 import { getCartes, getSaisons, getEffigies, getArtistes, getRaretes } from './db';
 dotenv.config();
 
@@ -7,9 +9,13 @@ const app = express();
 
 app.use(express.json());
 
+// Configuration de Swagger
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
 app.get('/', (req: Request, res: Response) => {
     res.send('Api non officielle du jeu de carte Wankul');
 });
+
 
 const port = process.env.PORT || 3000;
 
