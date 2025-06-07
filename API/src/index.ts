@@ -29,13 +29,13 @@ app.listen(port, () => {
 
 // Recupération de toutes les cartes
 app.get('/cartes', (req: Request, res: Response) => {
-    const saison = req.query.saison ? req.query.saison.toString() : undefined;
+    const saison = req.query.saison ? req.query.saison.toString().replace("_", " ") : undefined;
     const saison_numero = req.query.saison_numero ? req.query.saison_numero.toString() : undefined;
-    const nom = req.query.nom ? req.query.nom.toString() : undefined;
+    const nom = req.query.nom ? req.query.nom.toString().replace("_", " ") : undefined;
     const numero = req.query.numero ? req.query.numero.toString() : undefined;
-    const effigie = req.query.effigie ? req.query.effigie.toString() : undefined;
-    const artiste = req.query.artiste ? req.query.artiste.toString() : undefined;
-    const rarete = req.query.rarete ? req.query.rarete.toString() : undefined;
+    const effigie = req.query.effigie ? req.query.effigie.toString().replace("_", " ") : undefined;
+    const artiste = req.query.artiste ? req.query.artiste.toString().replace("_", " ") : undefined;
+    const rarete = req.query.rarete ? req.query.rarete.toString().replace("_", " ") : undefined;
 
     getCartes(saison, saison_numero, nom, numero, effigie, artiste, rarete)
         .then(cartes => {
@@ -56,7 +56,7 @@ app.get('/cartes', (req: Request, res: Response) => {
 
 // Recupération des saisons
 app.get('/saisons', (req: Request, res: Response) => {
-    const saison = req.query.saison ? req.query.saison.toString() : undefined;
+    const saison = req.query.saison ? req.query.saison.toString().replace("_", " ") : undefined;
     const saison_numero = req.query.saison_numero ? req.query.saison_numero.toString() : undefined;
     const nbr_Cartes = req.query.nbr_cartes ? parseInt(req.query.nbr_cartes.toString(), 10) : undefined;
     getSaisons(saison, saison_numero, nbr_Cartes)
