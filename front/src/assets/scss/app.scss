@@ -91,7 +91,7 @@ h2{
     display: flex;
     justify-content: center;
     gap: 32px;
-    padding: 32px 68px 0;
+    padding: 32px 68px ;
     border-radius: 32px 32px 0 0;
     margin-top:  62px;
     min-height: calc(100vh - 162px); // 100px (header) + 62px (margin-top)
@@ -138,7 +138,7 @@ h2{
         }
     }
     section{
-        width: 50%;
+        width: 70%;
         h3{
             font-size: 32px;
             margin: 0;
@@ -249,6 +249,31 @@ h2{
                 outline: none;
             }
         }
+    }
+}
+footer{
+    background-color: #252f3e;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 0;
+    p{
+        color: white;
+        margin: 5px;
+    }
+    img{
+        width: 42px;
+        height: 42px;
+    }
+    ul{
+        display: flex;
+        gap: 12px;
+        list-style: none;
+        padding: 0;
+        margin: 12px;
+    }
+    > a{
+        margin-top: 12px;
     }
 }
 @media (max-width: 768px) {
