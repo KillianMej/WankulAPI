@@ -1,4 +1,5 @@
 import dotenv from 'dotenv';
+import cors from 'cors';
 import express, {Request, Response} from 'express';
 import swaggerUi from 'swagger-ui-express';
 import swaggerDocument from '../swagger.json';
@@ -6,6 +7,12 @@ import { getCartes, getSaisons, getEffigies, getArtistes, getRaretes } from './d
 dotenv.config();
 
 const app = express();
+
+app.use(cors({
+    origin: '*',
+    methods: ['GET'],
+    allowedHeaders: ['Content-Type']
+}));
 
 app.use(express.json());
 
