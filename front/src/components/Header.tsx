@@ -1,4 +1,4 @@
-import wankulLogo from '/Wankul_Logo_Blanc.avif';
+import wankulLogo from '/WankulAPI.png';
 import menuBurger from '/menu-burger-logo.svg';
 
 function Header() {

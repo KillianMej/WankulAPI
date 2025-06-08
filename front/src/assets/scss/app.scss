@@ -16,7 +16,7 @@ header{
     top: 0;
     z-index: 1;
     width: 100%;
-    height: 100px;
+    height: 120px;
     padding: 18px 50px;
     box-shadow: 0 -6px 10px 5px rgba(0,0,0,0.2);
     #menuBurger{
@@ -278,7 +278,7 @@ footer{
 }
 @media (max-width: 768px) {
     header{
-        height: 77px;
+        height: 85px;
         top: -1px;
         #menuBurger{
             display: block;
@@ -290,6 +290,9 @@ footer{
         }
         div{
             justify-content: center;
+            img{
+                width: 100px;
+            }
             ul{
                 display: none;
             }
@@ -314,7 +317,7 @@ footer{
             box-shadow: none;
             border-radius: 0;
             width: 100%;
-            min-height: calc(100vh - 74px);
+            min-height: 100vh;
             ul{
                 margin-top: 18px;
                 a{
