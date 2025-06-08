@@ -48,6 +48,7 @@ function Intro(){
         <section>
             <h3>Introduction <span></span></h3>
             <p>Wankul API est une API permettant la récupération de toutes les cartes Wankul et autres informations relatives à Wankul</p>
+            <p>Pour faire un appel a l'API il appeler <span className="requete">https://api.wankulapi-unofficial.fr</span></p>
             <p>Elle renvoie les informations demandées sous forme de JSON</p>
             <p>Voici la mise en forme du JSON pour la récupération des cartes</p>
             <pre className="requete">{exempleJsonCarte}</pre>
